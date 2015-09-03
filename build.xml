@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="WebLogic - Utility" default="help-weblogic" basedir=".">
+  <property file="weblogic.properties"/>
+  
+    <taskdef name="wldeploy" classname="weblogic.ant.taskdefs.management.WLDeploy">
+        <classpath>
+            <pathelement location="${weblogic.lib.dir}/weblogic.jar"/>
+        </classpath>
+    </taskdef>
+  
+    <target name="deploy">
+        <wldeploy action="deploy"
+                  name="${app.name}"
+                  source="${artifact.source}"
+                  user="${admin.username}"
+                  nostage="true"
+                  password="${admin.password}"
+                  verbose="true"
+                  adminurl="${server.address}" targets="${targets}" />
+    </target>
+  
+    <target name="undeploy">
+        <wldeploy action="undeploy"
+                  name="${app.name}"
+                  failonerror="false"
+                  user="${admin.username}"
+                  password="${admin.password}"
+                  verbose="true"
+                  adminurl="${server.address}" targets="${targets}" />
+    </target>
+
+</project>

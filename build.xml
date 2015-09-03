@@ -12,21 +12,23 @@
         <wldeploy action="deploy"
                   name="${app.name}"
                   source="${artifact.source}"
-                  user="${admin.username}"
+                  user="${weblogic.user}"
                   nostage="true"
-                  password="${admin.password}"
+                  password="${weblogic.password}"
                   verbose="true"
-                  adminurl="${server.address}" targets="${targets}" />
+                  remote="true"
+                  upload="true"
+                  adminurl="${server.address}" targets="${weblogic.targets}" />
     </target>
   
     <target name="undeploy">
         <wldeploy action="undeploy"
                   name="${app.name}"
                   failonerror="false"
-                  user="${admin.username}"
-                  password="${admin.password}"
+                  user="${weblogic.user}"
+                  password="${weblogic.password}"
                   verbose="true"
-                  adminurl="${server.address}" targets="${targets}" />
+                  adminurl="${server.address}" targets="${weblogic.targets}" />
     </target>
 
 </project>
